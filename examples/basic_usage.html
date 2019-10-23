@@ -1,41 +1,31 @@
 <html>
-  <body>
-    <script src="https://unpkg.com/ipfs/dist/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="../dist/index.js"></script>
 
-    <script>
-if (window.ipfs === undefined) {
-  const repoPath = 'ipfs-' + Math.random()
-  const node = new Ipfs({
-    init: false,
-    start: false,
-    repo: repoPath
-  })
-  node.init().then(() => node.start()).then(() => handleInit(node))
-} else {
-  window.ipfs.enable().then(handleInit)
-}
+<body>
+  <script src="https://unpkg.com/@erebos/swarm-browser/dist/erebos.swarm.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="../dist/index.js"></script>
 
-function handleInit(node) {
-  const testhash = "QmdpAidwAsBGptFB3b6A9Pyi5coEbgjHrL3K2Qrsutmj9K";
-  Hls.DefaultConfig.loader = HlsjsIpfsLoader;
-  Hls.DefaultConfig.debug = false;
-  if (Hls.isSupported()) {
-    const video = document.getElementById('video');
-    const hls = new Hls();
-    hls.config.ipfs = node;
-    hls.config.ipfsHash = testhash;
-    hls.loadSource('master.m3u8');
-    hls.attachMedia(video);
-    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-      video.play();
-    });
-  }
-}
-    </script>
+  <video id="video" controls></video>
+  <script>
+    bzzClient = new Erebos.swarm.SwarmClient({ bzz: { url: 'https://swarm-gateways.net/' } })
+    handleInit(bzzClient)
 
-    <video id="video" controls></video>
+    function handleInit(node) {
+      const testhash = "da30bb001cc3a8f6537e81e92af3ccd67bbf3c0f51c8e256b75ba0c58ac21c61";
+      Hls.DefaultConfig.loader = HlsjsSwarmLoader;
+      if (Hls.isSupported()) {
+        const video = document.getElementById('video');
+        const hls = new Hls();
+        hls.config.bzz = node.bzz;
+        hls.config.bzzHash = testhash;
+        hls.loadSource('master.m3u8');
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play();
+        });
+      }
+    }
+  </script>
+</body>
 
-  </body>
 </html>

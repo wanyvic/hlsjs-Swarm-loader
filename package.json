@@ -1,21 +1,21 @@
 {
-  "name": "hlsjs-ipfs-loader",
-  "version": "0.2.2",
-  "description": "IPFS loader for hls.js",
+  "name": "hlsjs-Swarm-loader",
+  "version": "0.2.3",
+  "description": "eth swarm loader for hls.js",
   "main": "src/index.js",
   "scripts": {
     "build": "aegir build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moshisushi/hlsjs-ipfs-loader.git"
+    "url": "git+https://github.com/wanyvic/hlsjs-Swarm-loader"
   },
   "author": "Henry Rodrick <moshisushi@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/moshisushi/hlsjs-ipfs-loader/issues"
+    "url": "https://github.com/wanyvic/hlsjs-Swarm-loader/issues"
   },
-  "homepage": "https://github.com/moshisushi/hlsjs-ipfs-loader#readme",
+  "homepage": "https://github.com/wanyvic/hlsjs-Swarm-loader#readme",
   "dependencies": {
     "aegir": "^15.2.0"
   }

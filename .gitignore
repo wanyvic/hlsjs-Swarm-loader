@@ -88,3 +88,5 @@ typings/
 .dynamodb/
 
 *-lock.json
+.DS_Store
+dist
