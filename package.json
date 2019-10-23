@@ -1,5 +1,5 @@
 {
-  "name": "hlsjs-Swarm-loader",
+  "name": "hlsjs-swarm-loader",
   "version": "0.2.3",
   "description": "eth swarm loader for hls.js",
   "main": "src/index.js",
